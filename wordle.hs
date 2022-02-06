@@ -24,22 +24,6 @@ data Square = Sq Char Colour
 
 type Guess = [Square]
 
-type Wordle = [Guess]
-
-correct :: Guess -> Bool
-correct = all $ \(Sq _ col) -> col == Green
-
-word :: Guess -> String
-word = map $ \(Sq c _) -> c
-
-won :: Wordle -> Bool
-won [] = False
-won gs = correct $ last gs
-
-gameover :: Wordle -> Bool
-gameover [] = False
-gameover gs = length gs >= 6 && not (won gs)
-
 type Dictionary = [String]
 
 data ContainsType = AtLeast | Exactly
